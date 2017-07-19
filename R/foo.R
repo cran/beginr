@@ -8,11 +8,10 @@
 #' @examples
 #' bib()
 #' bib(pkg = c('mindr', 'bookdownplus', 'pinyin'))
-#' @importFrom grDevices col2rgb colors rainbow rgb rgb2hsv
-#' @importFrom graphics abline arrows axis box hist legend lines mtext pairs panel.smooth par plot points polygon rect rug strwidth text
+#' @importFrom grDevices col2rgb colors rainbow rgb rgb2hsv gray hcl
+#' @importFrom graphics abline arrows axis box hist legend lines mtext pairs panel.smooth par plot points polygon rect rug strwidth text barplot
 #' @importFrom stats IQR cor cor.test density dnorm fivenum lm rnorm sd
-#' @importFrom utils citation read.table toBibtex write.csv
-
+#' @importFrom utils citation read.table toBibtex write.csv unzip
 bib <- function(pkg = c('base'), bibfile = ''){
   pkg <- unique(pkg[order(pkg)])
   for (i in pkg){
@@ -579,6 +578,45 @@ plotpairs2 <- function(data, lower.panel=panel.smooth, upper.panel=panel.cor, di
   pairs(data, lower.panel=lower.panel, upper.panel=upper.panel, diag.panel  =  diag.panel, lwd = 2, col = "grey", labels=labels, cex.labels=4)
 }
 
+#' plot daily download counts of packages
+#'
+#' @param mypkg character vector of package names.
+#' @param from character in 'Y-m-d'
+#' @param type the same as that in 'plot()'
+#' @param pch the same as that in 'plot()'
+#' @param col the same as that in 'plot()'
+#' @param cex the same as that in 'plot()'
+#' @param textcex cex of the package name
+#' @param to character in 'Y-m-d'
+#'
+#' @return a figure
+#' @export
+#'
+#' @examples plotpkg()
+plotpkg <- function(mypkg = c('bookdownplus', 'mindr', 'pinyin', 'beginr')[1],
+                    from = c('2017-06-21', '2017-06-19', '2017-06-19', '2017-06-23')[1],
+                    to = Sys.Date(),
+                    type = 'o',
+                    pch = 19,
+                    col = 'blue',
+                    cex = 1,
+                    textcex = 5){
+  from <- as.Date(from)
+  to <- as.Date(to)
+  nr_down <- cranlogs::cran_downloads(packages = mypkg, from = from, to = to)
+  nr_down$count[nr_down$count == 0] <- NA
+  Sys.setlocale("LC_ALL","English")
+  par(mar = c(2,6,0.5,0), las = 1)
+  plot(nr_down$date,
+       nr_down$count,
+       xlab = '', ylab = 'Downloads',
+       type = type, pch = pch, col = col, cex = cex)
+  legend('topright', legend = paste0('Total: ', sum(nr_down$count, na.rm = TRUE)), bty = 'n', cex = cex)
+  par(new = TRUE)
+  plot(0:1, 0:1, xlab = '', ylab = '', axes = FALSE, type = 'n')
+  text(0.5, 0.5, mypkg, cex = textcex, col = 'grey')
+}
+
 #' plot a blank figure
 #' @return a blank figure
 #' @export
@@ -651,31 +689,67 @@ plotcolors <- function(){
   par(oldpar)
 }
 
+#' A reminder for color bars
+#'
+#' @return a figure
+#' @export
+#'
+#' @examples plotcolorbar()
+plotcolorbar <- function() {
+  mycex <- 3
+  par(mfrow = c(7, 1), mar = c(2,0,0,0))
+  colorbar <- function(myfunction) {
+    barplot(rep(1,100), col= get(myfunction)(100)[1:100], yaxt = 'n', border = NA, space = 0)
+    legend('center', legend = paste0(myfunction, '(n)'), bty = 'n', cex = mycex)
+    axis(1, at = seq(0, 100, by = 10), tck = 0.2, col.ticks = 'white', col = 'white')
+    axis(3, at = seq(0, 100, by = 10), labels = NA, tck = 0.2, col = 'white')
+  }
+
+  lapply(X = c('rainbow',
+               'heat.colors',
+               'terrain.colors',
+               'topo.colors',
+               'cm.colors'), FUN = colorbar)
+  barplot(rep(1,100), col= gray(1:100/100), yaxt = 'n', border = NA, space = 0)
+  legend('center', legend = 'gray(x)', bty = 'n', cex = mycex)
+  axis(1, at = seq(0, 100, by = 10), labels = seq(0, 100, by = 10)/100, tck = 0.2, col.ticks = 'white', col = 'white')
+
+  barplot(rep(1,360), col= hcl(1:360), yaxt = 'n', border = NA, space = 0)
+  legend('center', legend = 'hcl(x)', bty = 'n', cex = mycex)
+  axis(1, at = seq(0, 360, by = 30), labels = seq(0, 360, by = 30), tck = 0.2, col.ticks = 'white', col = 'white')
+}
+
 #' A reminder for lty
+#'
+#' @param mylwd numeric. line width
+#'
 #' @return a figure reminding you lty
 #' @export
 #' @examples
 #' plotlty()
 #'
-plotlty <- function(){
+plotlty <- function(mylwd = 1){
   ltynr <- 6
   plot(0:ltynr + 1, 0:ltynr + 1, type = 'n', axes = FALSE, xlab = "", ylab = "")
   axis(2, las = 1, lwd = 0, at = seq(1, ltynr))
-  abline(h = seq(1, ltynr), lty = 1:ltynr )
+  abline(h = seq(1, ltynr), lty = 1:ltynr, lwd = mylwd )
 }
 
 
 #' A reminder for pch
+#'
+#' @param mycex cex
+#'
 #' @return a figure reminding you pch
 #' @export
 #' @examples
 #' plotpch()
 #'
-plotpch <- function(){
+plotpch <- function(mycex = 5){
   mypch <- 0:25
   x <- rep(1:13, 2)
   y <- rep(c(1, 1.8), each = 13)
-  plot(x, y, pch = mypch, ylim = c(0.5, 2.5), cex = 5, xlab = '', ylab = '', axes = FALSE)
+  plot(x, y, pch = mypch, ylim = c(0.5, 2.5), cex = mycex, xlab = '', ylab = '', axes = FALSE)
   text(x, y, labels = mypch, pos = 1, offset = 2, cex = 2)
 }
 
@@ -718,6 +792,17 @@ readdir <- function(mydir = getwd(), sep = c(","))
                  stringsAsFactors = FALSE)
   }
   return(y)
+}
+
+#' Create a new R package demo folder
+#' @return a folder with an R package skeleton
+#' @export
+#' @examples
+#' rpkg()
+#'
+rpkg <- function(){
+  mypath <- paste0(.libPaths(), '/beginr/zip/')
+  unzip(paste0(mypath[dir.exists(mypath)][1], 'rpkg.zip'))
 }
 
 #' standard error
