@@ -1,7 +1,7 @@
-3a5fd8d13c1bcb5b2174322f19a11130 *DESCRIPTION
+e79338338f20c3df1fae8f906278de3b *DESCRIPTION
 4a580d134f7dd2646b0edea6e4415426 *LICENSE
 f8502c7a4d638033cc1d69dc77fbd4e2 *NAMESPACE
-ce4b1dfbffa6f0de44f548cb7e139691 *R/foo.R
+3fdc2a07de078000090918a5d9112f89 *R/foo.R
 64f76cdb4eebae74e0357c6e7afc777e *inst/zip/rpkg.zip
 da5f90ff8382f93139f5cef2396978b2 *man/bib.Rd
 06d601fbb9302a4420c20482a911314a *man/dfplot.Rd
@@ -22,7 +22,7 @@ a2c60f269be8ea4f8400057aefe030e5 *man/plotpairs2.Rd
 6e79b4800a8e93e270eaddaff0422c49 *man/plotpch.Rd
 f78c79fd8b36a1a6a7475ad93b0df8ea *man/plotpkg.Rd
 a26ccf1be5253ef5221c847db095affb *man/plottype.Rd
-5feeed1a0932fd95bf3bf52d40f84949 *man/readdir.Rd
+7d820329e2089970b89cff98e687d033 *man/readdir.Rd
 f17489ec2a938296ae037e57ce9b4088 *man/rpkg.Rd
 65cb8cf25926c474310b23e4519099ba *man/se.Rd
 371da3f91c37aa8d3532c2e249451de8 *man/tapplydf.Rd
