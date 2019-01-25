@@ -1,6 +1,6 @@
 Package: beginr
-Version: 0.1.4
-Date: 2019-01-05
+Version: 0.1.5
+Date: 2019-01-25
 Title: Functions for R Beginners
 Author: Peng Zhao
 Maintainer: Peng Zhao <pzhao@pzhao.net>
@@ -13,6 +13,6 @@ URL: https://github.com/pzhaonet/beginr
 BugReports: https://github.com/pzhaonet/beginr/issues
 RoxygenNote: 6.1.1
 NeedsCompilation: no
-Packaged: 2019-01-11 22:02:15 UTC; PengZhao
+Packaged: 2019-01-25 17:23:59 UTC; PengZhao
 Repository: CRAN
-Date/Publication: 2019-01-11 22:30:04 UTC
+Date/Publication: 2019-01-25 19:40:02 UTC
