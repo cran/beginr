@@ -1,7 +1,7 @@
-f11ecee8fe2e17d1068e055ee0eca4e3 *DESCRIPTION
+311093cc6c782cd1eb3e254304b23b88 *DESCRIPTION
 4a580d134f7dd2646b0edea6e4415426 *LICENSE
 1e0c2d5148a73273d09458c509b83ce1 *NAMESPACE
-3fdc2a07de078000090918a5d9112f89 *R/beginr.R
+2f59213612296a7c6e69fbe25f7b3fd9 *R/beginr.R
 3006baa8a0fcb6f35dec658256405e9a *R/packr.R
 b8a5eb3cd81dcfc22679216a89cca2fe *inst/skeleton/-pkgr
 ab0091153ca76263de23cfe75ef0d983 *inst/skeleton/DESCRIPTION
@@ -32,7 +32,7 @@ dffbd9b38baab5ce9c85d191c9e46d96 *man/lmdf.Rd
 68ae98fb1a729f4b68e1b7b64cf5423b *man/plotpairs.Rd
 142927336080060f2b94eb90deaea92b *man/plotpairs2.Rd
 713adb26def0fbe294ba3bec2c5f2e0a *man/plotpch.Rd
-246f141f6af3ef30bc79cbfe9355c72f *man/plotpkg.Rd
+45e564dfe6a7130d63ceaf4cfa0cb9e6 *man/plotpkg.Rd
 6a599735b52dc70ec7fc524e20ca1901 *man/plottype.Rd
 992035eac632e26f28f52909999dbc54 *man/readdir.Rd
 91d03362f9e40a4ad39bac700acc414d *man/rpkg.Rd
