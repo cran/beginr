@@ -1,7 +1,7 @@
-311093cc6c782cd1eb3e254304b23b88 *DESCRIPTION
+e81af509a0c428ae39ef3fc0f2b2957d *DESCRIPTION
 4a580d134f7dd2646b0edea6e4415426 *LICENSE
-1e0c2d5148a73273d09458c509b83ce1 *NAMESPACE
-2f59213612296a7c6e69fbe25f7b3fd9 *R/beginr.R
+306425a04306944c8babdb40350487d9 *NAMESPACE
+31b47491994ee2f27deafce1e517799a *R/beginr.R
 3006baa8a0fcb6f35dec658256405e9a *R/packr.R
 b8a5eb3cd81dcfc22679216a89cca2fe *inst/skeleton/-pkgr
 ab0091153ca76263de23cfe75ef0d983 *inst/skeleton/DESCRIPTION
@@ -38,6 +38,7 @@ dffbd9b38baab5ce9c85d191c9e46d96 *man/lmdf.Rd
 91d03362f9e40a4ad39bac700acc414d *man/rpkg.Rd
 d6846de5bfc63d9a7fbb8ad3500e0ba3 *man/rplc.Rd
 fe195eb286278d876ff69c6e47c5eb41 *man/se.Rd
+a402d077ceb6267dc27bf0612110a27d *man/tapply2.Rd
 f4c3dae3f419c087b44144a48f44e0ff *man/tapplydf.Rd
 a48dffe60daa5610f7eaa3ab810e297e *man/tapplydfv.Rd
 134b6fa25b735cfbc3bd4957729da861 *man/writefile.Rd
